@@ -18,4 +18,5 @@ polygon = PackedVector2Array(-800, -960, -800, -1280, 1664, -1280, 1664, 1280, -
 polygon = PackedVector2Array(-1472, -288, -800, -960, -800, -1280, -1792, -1280, -1792, -288)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
 texture = ExtResource("2_a1fvy")
