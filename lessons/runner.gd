@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+@onready var _dust: GPUParticles2D = %Dust
 @export var max_speed := 600.0
 
 @export var acceleration := 1200.0
@@ -21,11 +21,14 @@ func _physics_process(delta: float) -> void:
 
 	if direction.length() > 0.0:
 		_runner_visual.angle = rotate_toward(_runner_visual.angle, direction.orthogonal().angle(), 8.0 * delta)
+
 		var current_speed_percent := velocity.length() / max_speed
 		_runner_visual.animation_name = (
 			RunnerVisual.Animations.WALK
 			if current_speed_percent < 0.8
 			else RunnerVisual.Animations.RUN
 		)
+		_dust.emitting = true
 	else:
 		_runner_visual.animation_name = RunnerVisual.Animations.IDLE
+		_dust.emitting = false
