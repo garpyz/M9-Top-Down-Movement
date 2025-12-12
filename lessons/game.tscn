@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c62bk8cggi6yq"]
+[gd_scene load_steps=9 format=3 uid="uid://c62bk8cggi6yq"]
 
+[ext_resource type="Script" uid="uid://5nrf8ebgtofs" path="res://lessons/game.gd" id="1_48faf"]
 [ext_resource type="PackedScene" uid="uid://p75euy1gcr34" path="res://lessons/runner.tscn" id="1_yasw7"]
 [ext_resource type="PackedScene" uid="uid://l5vkm11cgaib" path="res://lessons/simple_obstacle.tscn" id="2_4o7yg"]
 [ext_resource type="PackedScene" uid="uid://nodtguob37a2" path="res://lessons/circuit_obstacle.tscn" id="3_4o7yg"]
 [ext_resource type="Texture2D" uid="uid://5vl7p0xb7nd8" path="res://assets/circuit_background.png" id="4_gkp25"]
+[ext_resource type="PackedScene" uid="uid://xl56q8amb611" path="res://assets/finish_line/finish_line.tscn" id="5_sepuf"]
+[ext_resource type="Theme" uid="uid://cdcyvsn1fp8wa" path="res://assets/countdown/count_down_theme.tres" id="7_viysf"]
+[ext_resource type="Script" uid="uid://57e8080cpukf" path="res://assets/countdown/count_down.gd" id="8_tpjcj"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_48faf")
 
 [node name="Circuit Background" type="Sprite2D" parent="."]
 z_index = -1
@@ -14,25 +19,57 @@ position = Vector2(928, 577)
 texture = ExtResource("4_gkp25")
 
 [node name="Runner" parent="." instance=ExtResource("1_yasw7")]
+unique_name_in_owner = true
 position = Vector2(1199, 601)
 
 [node name="Circuit" parent="." instance=ExtResource("3_4o7yg")]
 position = Vector2(928, 577)
 
-[node name="SimpleObstacle2" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(1297, 912)
+[node name="FinishLine" parent="." instance=ExtResource("5_sepuf")]
+unique_name_in_owner = true
+position = Vector2(2271, 557)
+area_width = 256
 
-[node name="SimpleObstacle3" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(-351, 865)
+[node name="Obstacles" type="Node2D" parent="."]
+position = Vector2(2271, 557)
 
-[node name="SimpleObstacle4" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(373, -394)
+[node name="SimpleObstacle2" parent="Obstacles" instance=ExtResource("2_4o7yg")]
+position = Vector2(-974, 355)
 
-[node name="SimpleObstacle5" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(863, -264)
+[node name="SimpleObstacle3" parent="Obstacles" instance=ExtResource("2_4o7yg")]
+position = Vector2(-2622, 308)
 
-[node name="SimpleObstacle6" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(1408, -376)
+[node name="SimpleObstacle4" parent="Obstacles" instance=ExtResource("2_4o7yg")]
+position = Vector2(-1898, -951)
 
-[node name="SimpleObstacle7" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(2352, 263)
+[node name="SimpleObstacle5" parent="Obstacles" instance=ExtResource("2_4o7yg")]
+position = Vector2(-1408, -821)
+
+[node name="SimpleObstacle6" parent="Obstacles" instance=ExtResource("2_4o7yg")]
+position = Vector2(-863, -933)
+
+[node name="SimpleObstacle7" parent="Obstacles" instance=ExtResource("2_4o7yg")]
+position = Vector2(81, -294)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CountDown" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -109.5
+offset_right = 45.5
+offset_bottom = 109.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("7_viysf")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tpjcj")
+metadata/_custom_type_script = "uid://57e8080cpukf"
