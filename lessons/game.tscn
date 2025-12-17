@@ -19,17 +19,17 @@ z_index = -1
 position = Vector2(928, 577)
 texture = ExtResource("4_gkp25")
 
+[node name="FinishLine" parent="." instance=ExtResource("5_sepuf")]
+unique_name_in_owner = true
+position = Vector2(2271, 557)
+area_width = 256
+
 [node name="Runner" parent="." instance=ExtResource("1_yasw7")]
 unique_name_in_owner = true
 position = Vector2(1199, 601)
 
 [node name="Circuit" parent="." instance=ExtResource("3_4o7yg")]
 position = Vector2(928, 577)
-
-[node name="FinishLine" parent="." instance=ExtResource("5_sepuf")]
-unique_name_in_owner = true
-position = Vector2(2271, 557)
-area_width = 256
 
 [node name="Obstacles" type="Node2D" parent="."]
 position = Vector2(2271, 557)
@@ -76,3 +76,6 @@ script = ExtResource("8_tpjcj")
 metadata/_custom_type_script = "uid://57e8080cpukf"
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("9_tpjcj")]
+unique_name_in_owner = true
+process_mode = 3
+animation_duration = 2.3
